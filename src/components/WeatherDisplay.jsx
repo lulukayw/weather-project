@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { capitalizeFirstLetter } from '../services/cap';
 
 export default function WeatherDisplay({ location }) {
     const [weather, setWeather] = useState(null);
@@ -35,7 +36,7 @@ export default function WeatherDisplay({ location }) {
                             <Typography variant="h2">{toF(weather.main.temp)}°F</Typography>
                             <Box>
                                 {/* add a weather icon here i think */}
-                                <Typography variant="body1">{weather.weather[0].description}</Typography>
+                                <Typography variant="body1">{capitalizeFirstLetter(weather.weather[0].description)}</Typography>
                             </Box>
                         </Box>
 
