@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import { getCurrentWeather } from '../services/api';
 import CircularProgress from '@mui/material/CircularProgress';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,19 +7,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { capitalizeFirstLetter } from '../services/cap';
 
-export default function WeatherDisplay({ location }) {
-    const [weather, setWeather] = useState(null);
-
-    useEffect(() => {
-        async function fetchWeather() {
-            const data = await getCurrentWeather(location);
-            setWeather(data);
-        }
-
-        fetchWeather();
-    }, [location]);
+export default function WeatherDisplay({ location, weather }) {
 
     const toF = (k) => Math.round((k - 273.15) * 9 / 5 + 32);
+    const iconCode = weather?.weather[0]?.icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
     return (
         <>
@@ -32,11 +22,20 @@ export default function WeatherDisplay({ location }) {
 
                         <Divider sx={{ my: 2 }} />
 
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <Typography variant="h2">{toF(weather.main.temp)}°F</Typography>
+
+                            <Box
+                                component="img"
+                                src={iconUrl}
+                                alt={weather.weather[0].description}
+                                sx={{ width: 80, height: 80 }}
+                            />
+
                             <Box>
-                                {/* add a weather icon here i think */}
-                                <Typography variant="body1">{capitalizeFirstLetter(weather.weather[0].description)}</Typography>
+                                <Typography variant="body1">
+                                    {capitalizeFirstLetter(weather.weather[0].description)}
+                                </Typography>
                             </Box>
                         </Box>
 

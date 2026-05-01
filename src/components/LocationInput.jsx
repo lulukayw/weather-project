@@ -89,6 +89,7 @@ export default function LocationInput({ onLocationSubmit }) {
                             label="City"
                             variant="outlined"
                             sx={{ flex: 1 }}
+                            value={city}
                             onChange={(e) => setCity(capitalizeFirstLetter(e.target.value))}
                         />
 
@@ -96,6 +97,7 @@ export default function LocationInput({ onLocationSubmit }) {
                             select
                             label="State"
                             sx={{ flex: 1 }}
+                            value={state}
                             onChange={(e) => setState(e.target.value)}
                         >
                             {Object.entries(states).map(([code, name]) => (
