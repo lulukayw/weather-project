@@ -16,13 +16,13 @@ export default function WeatherDisplay({ location, weather }) {
     return (
         <>
             {weather ?
-                <Card sx={{ maxWidth: 400, mx: 'auto', mt: 4, p: 2 }}>
+                <Card sx={{ maxWidth: 600, mx: 'auto', mt: 4, p: 2 }}>
                     <CardContent>
                         <Typography variant="h5">{location.city}, {location.state}</Typography>
 
                         <Divider sx={{ my: 2 }} />
 
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
                             <Typography variant="h2">{toF(weather.main.temp)}°F</Typography>
 
                             <Box
@@ -41,11 +41,11 @@ export default function WeatherDisplay({ location, weather }) {
 
                         <Divider sx={{ my: 2 }} />
 
-                        <Grid container spacing={2}>
-                            <Grid item xs={6}><Typography variant="body2">Humidity</Typography><Typography>{weather.main.humidity}%</Typography></Grid>
-                            <Grid item xs={6}><Typography variant="body2">Wind</Typography><Typography>{Math.round(weather.wind.speed * 2.237)} mph</Typography></Grid>
-                            <Grid item xs={6}><Typography variant="body2">Feels Like</Typography><Typography>{toF(weather.main.feels_like)}°F</Typography></Grid>
-                            <Grid item xs={6}><Typography variant="body2">Visibility</Typography><Typography>{Math.round(weather.visibility / 1609)} mi</Typography></Grid>
+                        <Grid container spacing={10} sx={{ justifyContent: 'center' }}>
+                            <Grid item xs={6} sx={{ textAlign: 'center' }}><Typography variant="body2">Humidity</Typography><Typography>{weather.main.humidity}%</Typography></Grid>
+                            <Grid item xs={6} sx={{ textAlign: 'center' }}><Typography variant="body2">Wind</Typography><Typography>{Math.round(weather.wind.speed * 2.237)} mph</Typography></Grid>
+                            <Grid item xs={6} sx={{ textAlign: 'center' }}><Typography variant="body2">Feels Like</Typography><Typography>{toF(weather.main.feels_like)}°F</Typography></Grid>
+                            <Grid item xs={6} sx={{ textAlign: 'center' }}><Typography variant="body2">Visibility</Typography><Typography>{Math.round(weather.visibility / 1609)} mi</Typography></Grid>
                         </Grid>
 
                     </CardContent>
