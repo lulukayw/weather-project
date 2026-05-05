@@ -30,7 +30,7 @@ export default function HourlyDisplay({ weather }) {
                         <Divider sx={{ my: 2 }} />
 
                         <Box sx={{ display: 'flex', overflowX: 'auto', gap: 2, pb: 1 }}>
-                            {intervals.slice(0, 12).map((interval) => {
+                            {intervals.slice(0, 24).map((interval) => {
                                 const v = interval.values;
                                 return (
                                     <Box key={interval.startTime} sx={{ minWidth: 64, textAlign: 'center', flexShrink: 0 }}>
